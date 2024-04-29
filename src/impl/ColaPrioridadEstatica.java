@@ -5,51 +5,36 @@ import api.ColaPrioridadTDA;
 public class ColaPrioridadEstatica implements ColaPrioridadTDA {
     int [] vector;
     int [] vectorPrioridad;
+
     int indice;
+    int posiciamiento;
+
     public void InicializacionCola(){
         vector= new int[20];
         vectorPrioridad= new int[20];
         indice=0;
     }
-    public void AcoplarPrioridad(int x, int prioridad){
-        int posiciamiento;
-        if (prioridad > vectorPrioridad[0]) {
-            inserta(posiciamiento=0 , x);
-            inserta(posiciamiento=0 , prioridad);
+    public void Acolar(int x, int prioridad){
+        // desplaza a derecha los elementos de la cola mientras
+        // estos tengan mayor o igual prioridad que la de x
+        int j = indice;
+        for (; j >0 && vectorPrioridad[j -1] >= prioridad; j -- ){
+            vector[j] = vector[j -1];
+            vectorPrioridad[ j] = vectorPrioridad[j -1];
         }
-        else if (prioridad < vectorPrioridad[indice-1]) {
-            vector[indice]=x;
-            vectorPrioridad[indice]=prioridad;
-        }
-        else{
-            for (int i=indice;i>0;i--){
-                if (prioridad >= vectorPrioridad[i]){
-                    inserta(posiciamiento=i , x);
-                    inserta(posiciamiento=i , prioridad);
-                }
-            }
+        vector[j] = x ;
+        vectorPrioridad[j] = prioridad;
         indice++;
-        }
-    }
-    public void inserta(int pos , int x){ 
-        for (int j=indice;j>pos;j--){
-            vector[j]=vector[j-1];
-        }
-        vector[pos]=x;
     }
 
-    public void DesAcoplar(){ //ACCAA
-        for (int j=0;j<=indice;j++){
-            vector[j]=vector[j+1];
-            vectorPrioridad[j]=vectorPrioridad[j+1];
-        }
+    public void Desacolar(){ 
         indice--;
     }
     public int Primero(){
-        return vector[0];
+        return vector[indice-1];
     }
     public int Prioridad(){
-        return vectorPrioridad[0];
+        return vectorPrioridad[indice-1];
     }
     public boolean ColaVacia(){
         return (indice == 0);

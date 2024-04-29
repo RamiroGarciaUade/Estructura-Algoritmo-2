@@ -25,13 +25,13 @@ public class ejercicioCola3y4 {
         metodosCola.invertirColaConPila(c2);
         metodosCola.mostrarCola(c2);
         System.out.println("---------------");
-        System.out.println("El ultimo valor de las dos colas es;"+metodosCola.coincidenciaCola(c2,c3)); //mal
+        System.out.println("El ultimo valor de las dos colas es;"+metodosCola.coincidenciaCola(c2,c3)); 
         System.out.println("Orden inverso de las dos colas es;"+metodosCola.inversoColaComparar(c2, c3));
         System.out.println("Estado capicura de la cola es;"+metodosCola.capicuraCola(c3));
 
-        /* 
-        metodosCola.invertirColaSinPila(c2);
-        System.out.println(c2);*/
+        
+        metodosCola.invertirColaSinPila(c2,3);
+        System.out.println(c2);
     }
 
 }

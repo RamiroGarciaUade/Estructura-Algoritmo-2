@@ -38,17 +38,15 @@ public class metodosCola {
             aux.Desapilar();
         }
     }
-    //ACAAAAAAAAAA/
-    public static void invertirColaSinPila(ColaTDA cola){
-        int [] lista=new int[20];
-        int indice=0;
-        while (!cola.ColaVacia()) {
-            lista[indice]=cola.Primero();
-            indice++;
-            cola.DesAcoplar();
-        }
-        for (int i=indice; i >= 0; i--){
-            cola.Acoplar(lista[i]);
+    
+    // ESTA MAL SIN NIGUNA ESTRUTURA DE DATOS , ES CON CURSIVIDIDAD
+    public static void invertirColaSinPila(ColaTDA cola , int cantidad){
+        int dato=cola.Primero();
+        cola.DesAcoplar();
+        cola.Acoplar(dato);
+        if (cantidad != 0) { // que condicion debo poner?
+            cantidad--;
+            invertirColaSinPila(cola,cantidad);
         }
     } 
     public static boolean coincidenciaCola(ColaTDA cola1 , ColaTDA cola2){
@@ -58,7 +56,7 @@ public class metodosCola {
         int ultimoValorCola2=0;
         while (cola1.ColaVacia()!=true && cola2.ColaVacia()!=true) {
             System.out.print(cola1.ColaVacia()+"-"+cola2.ColaVacia()+"/");
-            if (!cola1.ColaVacia()) { //problema con cola1 
+            if (!cola1.ColaVacia()) { 
                 aux1.Acoplar(cola1.Primero());
                 ultimoValorCola1=cola1.Primero();
                 cola1.DesAcoplar();

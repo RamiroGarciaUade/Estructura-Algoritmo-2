@@ -2,50 +2,49 @@ package impl;
 
 import api.ColaPrioridadTDA;
 
-public class ColaPrioridadDinamica {
-    Nodo primero;
-    Nodo ultimo;
-    class Nodo {
+public class ColaPrioridadDinamica implements ColaPrioridadTDA {
+
+    NodoPrioridad  mayorPrioridad ;
+
+    class NodoPrioridad  {
         int info;
-        int prio;
-        Nodo sig;
+        int prioridad;
+        NodoPrioridad sig;
     }
     public void InicializacionCola(){
-        primero=null;
-        ultimo=null;
+        mayorPrioridad=null;
         
     }
-    public void AcoplarPrioridad(int x, int prioridad){
-        Nodo aux=new Nodo();
-        aux.info=x;
-        aux.prio=prioridad;
-        aux.sig=null;
-        if (aux.prio > primero.prio){
-            aux.sig = primero;
-            primero=aux;
+    public void Acolar(int x, int prioridad){
+        // Creo el nuevo nodo que voy a acolar
+        NodoPrioridad nuevo = new NodoPrioridad();
+        nuevo.info = x;
+        nuevo.prioridad = prioridad;
+        // Si la cola esta vacıa o bien es mas prioritario que el primero hay que agregarlo al principio
+        if ( mayorPrioridad == null || prioridad > mayorPrioridad.prioridad) {
+            nuevo. sig = mayorPrioridad ;
+            mayorPrioridad = nuevo;
         }
-        else if  (aux.prio < ultimo.prio){
-            ultimo.sig=aux;
-            ultimo=aux;
-        }
-        else{
-            for (;>=aux.prio;){
-                
-                aux.sig=
+        else {
+            // Sabemos que mayorPrioridad no es null
+            NodoPrioridad aux = mayorPrioridad;
+            while( aux.sig != null && aux.sig.prioridad >= prioridad) {
+                aux = aux.sig ;
             }
-        }
+            nuevo.sig = aux.sig ; // NO LO ELEMINA EL NODO POR EL NUEVO?
+            aux.sig = nuevo;
+            }
     }
-
-    public void DesAcoplar(){ //ACCAA
-        
+    public void Desacolar(){ 
+        mayorPrioridad = mayorPrioridad. sig ;
     }
     public int Primero(){
-        return primero.info;
+        return mayorPrioridad. info ;
     }
     public int Prioridad(){
-        return primero.prio ;
+        return mayorPrioridad. prioridad;
     }
     public boolean ColaVacia(){
-        return ( primero == null );
+        return ( mayorPrioridad == null );
     }
 }
