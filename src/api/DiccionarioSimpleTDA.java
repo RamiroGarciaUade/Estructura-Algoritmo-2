@@ -1,6 +1,6 @@
 package api;
 
-public interface DiccionarioTDA {
+public interface DiccionarioSimpleTDA {
     void InicializarDiccionario();
     void Agregar(int clave , int valor);
     int Recuperar(int clave);

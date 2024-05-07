@@ -1,9 +1,9 @@
 package impl;
 
 import api.ConjuntoTDA;
-import api.DiccionarioTDA;
+import api.DiccionarioSimpleTDA;
 
-public class DiccionarioSimpleDinamica implements DiccionarioTDA {
+public class DiccionarioSimpleDinamica implements DiccionarioSimpleTDA {
     Nodo primero;
     Nodo ultimo;
     int cantidad;

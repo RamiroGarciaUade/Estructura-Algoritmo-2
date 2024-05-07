@@ -1,9 +1,9 @@
 package impl;
 
-import api.DiccionarioTDA;
+import api.DiccionarioSimpleTDA;
 import api.ConjuntoTDA;
 
-public class DiccionarioSimpleEstatica implements DiccionarioTDA {
+public class DiccionarioSimpleEstatica implements DiccionarioSimpleTDA {
     int [][] matriz;
     int cant;
 

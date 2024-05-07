@@ -1,13 +1,13 @@
 import api.ConjuntoTDA;
 
-import api.DiccionarioTDA;
+import api.DiccionarioSimpleTDA;
 import impl.DiccionarioSimpleEstatica;
 import impl.DiccionarioSimpleDinamica;
 
 
 public class ejercicioDiccionarioSimple {
     public static void main(String[] args) throws Exception {
-        DiccionarioTDA d1 = new DiccionarioSimpleEstatica();
+        DiccionarioSimpleTDA d1 = new DiccionarioSimpleEstatica();
         d1.InicializarDiccionario();
         d1.Agregar(10, 1);
         d1.Agregar(15, 2);
@@ -16,7 +16,7 @@ public class ejercicioDiccionarioSimple {
         System.out.println("Valor de la clave 20:"+d1.Recuperar(15));
         ConjuntoTDA ClavesD1=d1.Claves();
         System.out.println("---------------");
-        DiccionarioTDA d2 = new DiccionarioSimpleDinamica();
+        DiccionarioSimpleTDA d2 = new DiccionarioSimpleDinamica();
         d2.Agregar(45, 1);
         d2.Agregar(78, 2);
         d2.Agregar(89, 3);
