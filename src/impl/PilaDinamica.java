@@ -27,6 +27,7 @@ public class PilaDinamica implements PilaTDA {
         return ( primero == null ) ;
     }
     public int Tope () {
-    return primero.info ;
+        return primero.info ;
+
     }
 }

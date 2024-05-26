@@ -1,0 +1,91 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioCola3y4",
+            "request": "launch",
+            "mainClass": "ejercicioCola3y4",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioColaPrioridad6",
+            "request": "launch",
+            "mainClass": "ejercicioColaPrioridad6",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioConjunto3y6",
+            "request": "launch",
+            "mainClass": "ejercicioConjunto3y6",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioDiccionarioMultiple",
+            "request": "launch",
+            "mainClass": "ejercicioDiccionarioMultiple",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioDiccionarioSimple",
+            "request": "launch",
+            "mainClass": "ejercicioDiccionarioSimple",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioListaPromediada",
+            "request": "launch",
+            "mainClass": "ejercicioListaPromediada",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioPila2a",
+            "request": "launch",
+            "mainClass": "ejercicioPila2a",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioPilaCola_Pares",
+            "request": "launch",
+            "mainClass": "ejercicioPilaCola_Pares",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejercicioSecuencia",
+            "request": "launch",
+            "mainClass": "ejercicioSecuencia",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        },
+        {
+            "type": "java",
+            "name": "ejerciciosArbol",
+            "request": "launch",
+            "mainClass": "ejerciciosArbol",
+            "projectName": "JavaClaseAlgoritmo2_b05d65d"
+        }
+    ]
+}
