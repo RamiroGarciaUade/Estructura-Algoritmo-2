@@ -21,12 +21,14 @@ public class AlumnoNotasDinamico implements AlumnoNotasTDA{
     ConjuntoTDA Alumnos=new ConjuntosDinamico();
 
     int cantidadAlumnos;
+    int totalNotas;
 
     public void InicializacionAlumnoNota(){
         primero=null;
         ultimo=null;
         Alumnos.InicializarConjunto();
         cantidadAlumnos=0;
+        totalNotas=0;
     }
 
     public void NotasAlumno(int id){ //mostra las notas del alumnos
@@ -67,30 +69,23 @@ public class AlumnoNotasDinamico implements AlumnoNotasTDA{
     }
 
 
-    public double PromedioGrupal(){ // ! solo hay dos element6os 
+    public double PromedioGrupal(){
         double resultado=0;
-        int totalNotaPromedio=0;
-        Nodo aux=new Nodo();
-        aux=primero;
-        while (aux !=null) {
-            totalNotaPromedio+=PromedioAlumno(aux.id);
-            aux=aux.sig;
-        }
         if (primero != null) {
-            resultado= totalNotaPromedio / cantidadAlumnos;
+            resultado= totalNotas / cantidadAlumnos;
         }
         return resultado;
     }
 
     public void AlumnosAprobados(){ // ! solo hay dos element6os 
         if (!Alumnos.ConjuntoVacion()) {
-            Nodo recorrer = new Nodo();
-            recorrer=primero;
-            while (recorrer != null) {
-                if (PromedioAlumno(recorrer.id) >= 4) {
-                    System.out.println(recorrer.id);
+            Nodo aux=new Nodo();
+            aux=primero;
+            while (aux !=null) {
+                if (PromedioAlumno(aux.id) >= 4) {
+                    System.out.println(aux.id);
                 }
-                recorrer=recorrer.sig;
+                aux=aux.sig;
             }
         }
     }
@@ -106,6 +101,7 @@ public class AlumnoNotasDinamico implements AlumnoNotasTDA{
                 recorrerNodo=recorrerNodo.sig;
             }
             if (recorrerNodo.id==id) {
+                totalNotas+=nota;
                 recorrerNodo.notas.Acoplar(nota);
             }
         }
@@ -114,6 +110,7 @@ public class AlumnoNotasDinamico implements AlumnoNotasTDA{
             Nodo aux=new Nodo();
             Alumnos.Agregar(id);
             cantidadAlumnos++;
+            totalNotas+=nota;
 
             aux.id=id;
             aux.notas.InicializarCola();
@@ -127,6 +124,7 @@ public class AlumnoNotasDinamico implements AlumnoNotasTDA{
             Nodo aux=new Nodo();
             Alumnos.Agregar(id);
             cantidadAlumnos++;
+            totalNotas+=nota;
 
             aux.id=id;
             aux.notas.InicializarCola();
@@ -141,6 +139,10 @@ public class AlumnoNotasDinamico implements AlumnoNotasTDA{
     public void BorrarAlumno(int id){
         if (Alumnos.Pertenece(id)) {
             if (primero.id == id) {
+                while (!primero.notas.ColaVacia()) {
+                    totalNotas-=primero.notas.Primero();
+                    primero.notas.DesAcoplar();
+                }
                 primero=primero.sig;
             }
             else {
@@ -148,6 +150,10 @@ public class AlumnoNotasDinamico implements AlumnoNotasTDA{
                 recorrer=primero;
                 while (recorrer.sig != null && recorrer.sig.id != id) {
                     recorrer=recorrer.sig;
+                }
+                while (!recorrer.sig.notas.ColaVacia()) {
+                    totalNotas-=recorrer.sig.notas.Primero();
+                    recorrer.sig.notas.DesAcoplar();
                 }
                 if ( recorrer.sig != null &&  recorrer.sig.id == id ) {
                     recorrer.sig=recorrer.sig.sig;

@@ -3,8 +3,6 @@ package impl;
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
 
-import api.ConjuntoTDA;
-import impl.ConjuntosDinamico;
 
 public class DiccionarioMultipleDinamico implements DiccionarioMultipleTDA {
 

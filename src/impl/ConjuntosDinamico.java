@@ -52,6 +52,7 @@ public class ConjuntosDinamico implements ConjuntoTDA {
         }
         return (recorrer != null);
     }
+    
     public  int Elegir() { // no elige Nodo sino el numero entre cantidad
         int numero = (int) (Math.random() * cantidad) + 1 % cantidad;
         return numero;
