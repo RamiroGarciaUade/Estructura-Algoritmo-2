@@ -4,8 +4,6 @@ import api.AlumnoNotasTDA;
 import api.ConjuntoTDA;
 import api.ColaTDA;
 
-import javax.print.attribute.standard.Sides;
-
 import algoritmos.metodosCola;
 
 public class AlumnoNotasDinamico implements AlumnoNotasTDA{

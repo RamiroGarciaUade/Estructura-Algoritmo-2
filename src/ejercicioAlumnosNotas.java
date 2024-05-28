@@ -1,8 +1,8 @@
 import api.AlumnoNotasTDA;
-import impl.AlumnoNotasDinamico;
+import impl.AlumnoNotasDinamico2;
 public class ejercicioAlumnosNotas {
     public static void main(String[] args) {
-        AlumnoNotasTDA an1 = new AlumnoNotasDinamico();
+        AlumnoNotasTDA an1 = new AlumnoNotasDinamico2();
         an1.InicializacionAlumnoNota();
         an1.AltaNota(1, 5);
         an1.AltaNota(1, 7);
@@ -27,16 +27,9 @@ public class ejercicioAlumnosNotas {
         an1.AltaNota(4, 7);
         an1.NotasAlumno(4);
         System.out.println("Promedio;"+an1.PromedioAlumno(4));
-        System.out.println("----------");
-        System.out.println("Alumnos aprobados");
         an1.AlumnosAprobados();
-        System.out.println("----------");
-        System.out.println("Promedio grupal:"+an1.PromedioGrupal());
-        System.out.println("----------");
-
-        an1.BorrarAlumno(3);
-        System.out.println("Promedio;"+an1.PromedioAlumno(3));
+        an1.BorrarAlumno(4);
+        System.out.println("Promedio;"+an1.PromedioAlumno(4));
+        System.out.println("Promedio total;"+an1.PromedioGrupal());
     }
-    
-
 }
