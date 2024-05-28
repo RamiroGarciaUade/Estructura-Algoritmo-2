@@ -1,15 +1,97 @@
 package algoritmos;
 
-import api.ColaTDA;
-import impl.ColaDinamica;
+import java.util.ArrayList;
 
+import api.ColaTDA;
+import api.ConjuntoTDA;
+import impl.ColaDinamica;
+import impl.ConjuntosDinamico;
 import api.PilaTDA;
 import impl.PilaDinamica;
 
 // CREAR METODO DE PASA UNA COLA A PILA PARA NO REPETIR CODIGO
 
 public class metodosCola {
+
+    public static ArrayList<ColaTDA> partirMitadCola(ColaTDA c1){ // ! no carga las cola1 y cola2
+        ArrayList<ColaTDA> colasPartidas= new ArrayList<>();
+        ColaTDA cola1 = new ColaDinamica();
+        cola1.InicializarCola();
+
+        ColaTDA cola2 = new ColaDinamica();
+        cola1.InicializarCola();
+
+        ColaTDA colaAux = new ColaDinamica();
+        colaAux.InicializarCola();
+        copiarCola(c1, colaAux);
+
+        ColaTDA colaAux1 = new ColaDinamica();
+        colaAux.InicializarCola();
+        copiarCola(c1, colaAux1);
+        int i=0;
+        while (!colaAux1.ColaVacia()) {
+            i++;
+            colaAux1.DesAcoplar();
+        }
+        if (i % 2 == 0) {
+            int vueltas=i / 2;
+            int a=vueltas;
+            while (a != 0) {
+                cola1.Acoplar(colaAux.Primero());
+                colaAux.DesAcoplar();
+                a--;
+            }
+            int b=vueltas;
+            while (b !=0) {
+                cola1.Acoplar(colaAux.Primero());
+                colaAux.DesAcoplar();
+                b--;
+            }
+            colasPartidas.add(cola1);
+            colasPartidas.add(cola2);
+        }
+        return colasPartidas;
+    }
+
+    public static ConjuntoTDA numeroRepetidos(ColaTDA c1){
+        ConjuntoTDA numeroCola =new ConjuntosDinamico();
+        numeroCola.InicializarConjunto();
+
+        ConjuntoTDA numeroColaRepetidos =new ConjuntosDinamico();
+        numeroColaRepetidos.InicializarConjunto();
+
+        ColaTDA colaAux = new ColaDinamica();
+        colaAux.InicializarCola();
+        copiarCola(c1, colaAux);
+        while (!colaAux.ColaVacia()) {
+            if (numeroCola.Pertenece(colaAux.Primero())) {
+                numeroColaRepetidos.Agregar(colaAux.Primero());
+            }
+            numeroCola.Agregar(colaAux.Primero());
+            colaAux.DesAcoplar();
+        }
+        return numeroColaRepetidos;
+    }
+
+    public static void eleminarRepeticiones(ColaTDA c1){
+        ConjuntoTDA numeroCola =new ConjuntosDinamico();
+        numeroCola.InicializarConjunto();
+        ColaTDA colaAux = new ColaDinamica();
+        colaAux.InicializarCola();
+        while (!c1.ColaVacia()) {
+            if (!numeroCola.Pertenece(c1.Primero())) {
+                colaAux.Acoplar(c1.Primero());
+                numeroCola.Agregar(c1.Primero());
+            }
+            c1.DesAcoplar();
+        }
+        pasarCola(colaAux, c1);
+    }
+
     public static void pasarCola(ColaTDA cola1 , ColaTDA cola2){
+        while (!cola2.ColaVacia()) {
+            cola2.DesAcoplar();
+        }
         while (!cola1.ColaVacia()) {
             cola2.Acoplar(cola1.Primero());
             cola1.DesAcoplar();
@@ -17,6 +99,9 @@ public class metodosCola {
     }
 
     public static void copiarCola(ColaTDA cola1 , ColaTDA cola2){
+        while (!cola2.ColaVacia()) {
+            cola2.DesAcoplar();
+        }
         ColaTDA aux = new ColaDinamica();
         aux.InicializarCola();
         pasarCola(cola1 ,aux);

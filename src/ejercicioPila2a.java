@@ -33,5 +33,19 @@ public class ejercicioPila2a {
         System.out.println("Suma total de elementos en la pila;"+SumaTotalElementos);
         float PromedioTotalElementos = metodosPila.promedioTotalPila(p3);
         System.out.println("El promedio total de los elementos en la pila;"+PromedioTotalElementos);
+
+        System.out.println("---------------");
+        PilaTDA p4 = new PilaDinamica();
+        p1.InicializarPila();
+
+        p4.Apilar(1);
+        p4.Apilar(2);
+        p4.Apilar(2);
+        p4.Apilar(3);
+        p4.Apilar(3);
+        p4.Apilar(4);
+        p4.Apilar(4);
+        metodosPila.eleminarRepeticiones(p4);
+        metodosPila.mostrarPila(p4);
     }
 }

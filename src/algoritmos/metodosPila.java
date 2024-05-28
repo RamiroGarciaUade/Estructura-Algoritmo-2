@@ -3,7 +3,27 @@ package algoritmos;
 import api.PilaTDA;
 import impl.PilaDinamica;
 
+import api.ConjuntoTDA;
+import impl.ConjuntosDinamico;
+
 public class metodosPila {
+    public static void eleminarRepeticiones(PilaTDA p1){
+        ConjuntoTDA numeroPila =new ConjuntosDinamico();
+        numeroPila.InicializarConjunto();
+        PilaTDA pilaAux=new PilaDinamica();
+        pilaAux.InicializarPila();
+        while (!p1.PilaVacia()) {
+            if (!numeroPila.Pertenece(p1.Tope())) {
+                pilaAux.Apilar(p1.Tope());
+                numeroPila.Agregar(p1.Tope());
+            }
+            p1.Desapilar();
+        }
+        pasarPila(pilaAux , p1);
+        invertirOrdeDelaPila(p1);
+    }
+
+
     public static void pasarPila (PilaTDA p1 , PilaTDA p2) { //El tope es el inicio de p2/
         while (!p1.PilaVacia()) {
             p2.Apilar(p1.Tope());
